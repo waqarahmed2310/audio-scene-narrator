@@ -1,4 +1,6 @@
 # PyTorch is preinstalled on Colab. Locally, install torch first: https://pytorch.org
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
 panns_inference
 torchlibrosa
 librosa>=0.10
