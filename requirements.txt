@@ -12,4 +12,4 @@ requests
 transformers>=4.45
 accelerate
 bitsandbytes
-gradio>=4.40
+streamlit>=1.40
