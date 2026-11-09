@@ -1,6 +1,10 @@
 # Audio Scene Narrator
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-name.streamlit.app)
+
 **Explaining complex acoustic scenes with sound event detection, foreground/background analysis and LLMs, and testing whether end-to-end audio-LLMs really understand scene structure.**
+
+**Live demo:** https://your-app-name.streamlit.app (pick a clip under *Example*, or upload your own)
 
 Upload a recording and the system tells you what is happening in it:
 
@@ -8,7 +12,7 @@ Upload a recording and the system tells you what is happening in it:
 
 You can then ask questions such as *"What is in the background?"*, *"Is there speech?"* or *"What happens first?"*. Every answer is grounded in a time-stamped detection, so it can be checked.
 
-<!-- Add a screenshot of the Gradio demo here: ![demo](docs/demo.png) -->
+<!-- Add a screenshot of the Streamlit app here: ![demo](docs/demo.png) -->
 
 ---
 
@@ -34,8 +38,10 @@ audio ──► PANNs CNN14 (AudioSet, 527 classes)        frame-level probabili
        foreground / background scoring               level contrast (dB) + clip coverage
             │
             ▼
-       event timeline (text)  ─────►  LLM (Qwen2.5-3B-Instruct)  ─────►  description / answers
+       event timeline (text)  ─────►  LLM  ─────►  description / answers
 ```
+
+The LLM is either a local model (Qwen2.5-3B-Instruct on a GPU) or any OpenAI-compatible API. The live demo uses `openai/gpt-oss-20b` on Groq.
 
 **Foreground/background rule.** For each detected event:
 
@@ -47,6 +53,10 @@ audio ──► PANNs CNN14 (AudioSet, 527 classes)        frame-level probabili
 `fg_score = 0.6 · contrast + 0.4 · (1 − coverage)`, foreground if ≥ 0.5. The rule is deliberately simple and explainable, and it is a drop-in slot for a learned model (`foreground_score` in `scene_narrator/events.py`).
 
 **Grounded prompting.** The LLM never hears the audio. Its system prompt only allows statements supported by the detector output, tells it to merge redundant AudioSet labels (*Dog* / *Bark*) and to flag low-confidence detections.
+
+## Example clips
+
+[`examples/`](examples/) contains 8 ten-second scenes mixed from ESC-50 recordings. Each has a steady background and 2-3 foreground sounds, and in 7 of them two foreground sounds **overlap** (e.g. a car horn and a siren in the rain). The exact ground truth (event times, roles, overlaps) is in `examples/scenes.json`. `08_hard_quiet_siren.wav` is a deliberately hard case: a faint siren under heavy rain. The clips can be regenerated with `scripts/make_examples.py`.
 
 ## Benchmark
 
@@ -87,26 +97,19 @@ Three systems answer the same questions:
 
 ## Run it
 
-**Colab (recommended):** open `notebooks/Audio_Scene_Narrator_Colab.ipynb`, select a T4 GPU and run all cells (~30-40 min including downloads). The notebook builds the scenes, runs both systems, saves the results to `results/`, and launches the Gradio demo.
+**Online:** open the [live demo](https://your-app-name.streamlit.app). No installation is needed.
 
-**Locally** (GPU with ≥ 8 GB recommended):
+**Benchmark on Colab:** open `notebooks/Audio_Scene_Narrator_Colab.ipynb`, select a T4 GPU and run the cells. The notebook builds the scenes, runs both systems and saves the results to `results/`.
+
+**Locally:**
 
 ```bash
 pip install torch            # see pytorch.org for your platform
 pip install -r requirements.txt
-python app.py                # demo
+streamlit run streamlit_app.py
 ```
 
-```python
-from scene_narrator.tagger import PannsTagger
-from scene_narrator.narrator import HFChatLLM, Narrator
-from scene_narrator.pipeline import SceneNarrator
-
-pipe = SceneNarrator(PannsTagger(), Narrator(HFChatLLM()))
-scene = pipe.analyze("my_recording.wav")
-print(pipe.describe(scene))
-print(pipe.ask(scene, "What is in the background?"))
-```
+In the sidebar, choose **API** (e.g. a free Groq key) or **Local model** (needs a GPU).
 
 ## Project structure
 
@@ -120,13 +123,15 @@ scene_narrator/
   synth.py       ESC-50 scene mixer with ground truth, question templates
   evaluate.py    detection matching, answer scoring, summaries
   audio_llm.py   Qwen2-Audio baseline
-app.py           Gradio demo
-notebooks/       Colab notebook for the full pipeline and benchmark
+streamlit_app.py   Streamlit demo
+examples/          overlapping example scenes with ground truth
+scripts/           script that builds the example scenes
+notebooks/         Colab notebook for the full pipeline and benchmark
 ```
 
 ## Limitations
 
-* Synthetic scenes are cleaner than real ones (no overlapping foreground events, no reverberation mismatch).
+* The benchmark scenes are cleaner than real ones: foreground events do not overlap, and there is no reverberation mismatch. The example clips include overlaps but are not yet part of the benchmark.
 * The foreground/background rule uses level and duration only. A quiet but semantically important sound (a distant siren) can be labelled background.
 * PANNs labels come from AudioSet. Mapping them to the ESC-50 classes is a hand-made table.
 * Templated questions measure specific skills, not open-ended scene understanding.
@@ -134,5 +139,5 @@ notebooks/       Colab notebook for the full pipeline and benchmark
 ## Credits
 
 * PANNs: Kong et al., *PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition*, 2020 ([code](https://github.com/qiuqiangkong/audioset_tagging_cnn), MIT)
-* ESC-50: Piczak, *ESC: Dataset for Environmental Sound Classification*, 2015 (CC BY-NC 3.0)
+* ESC-50: Piczak, *ESC: Dataset for Environmental Sound Classification*, 2015 (CC BY-NC 3.0). The example clips are mixed from ESC-50 recordings; see [`examples/README.md`](examples/README.md).
 * Qwen2.5 and Qwen2-Audio: Qwen team, Alibaba Cloud (see the model cards for licenses)
