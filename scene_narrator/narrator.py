@@ -73,7 +73,7 @@ class OpenAICompatibleLLM:
         r = requests.post(f"{self.base_url}/chat/completions",
                           headers={"Authorization": f"Bearer {self.api_key}"},
                           json={"model": self.model, "messages": messages,
-                                "max_tokens": max_new_tokens, "temperature": 0},
+                                "max_tokens": max_new_tokens + 1024, "temperature": 0},
                           timeout=120)
         r.raise_for_status()
         return r.json()["choices"][0]["message"]["content"].strip()

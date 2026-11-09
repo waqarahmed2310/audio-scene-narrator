@@ -22,7 +22,7 @@ st.set_page_config(page_title="Audio Scene Narrator", page_icon="🎧", layout="
 
 # Provider -> (base URL, default model). All of them speak the OpenAI chat-completions format.
 API_PRESETS = {
-    "Groq": ("https://api.groq.com/openai/v1", "llama-3.1-8b-instant"),
+    "Groq": ("https://api.groq.com/openai/v1", "openai/gpt-oss-20b"),
     "Hugging Face": ("https://router.huggingface.co/v1", "Qwen/Qwen2.5-7B-Instruct"),
     "OpenAI": ("https://api.openai.com/v1", "gpt-4o-mini"),
     "Ollama (local)": ("http://localhost:11434/v1", "qwen2.5:3b"),
