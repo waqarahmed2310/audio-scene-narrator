@@ -1,6 +1,6 @@
 # Audio Scene Narrator
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-name.streamlit.app)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://audio-scene-narrator.streamlit.app/)
 
 **Explaining complex acoustic scenes with sound event detection, foreground/background analysis and LLMs, and testing whether end-to-end audio-LLMs really understand scene structure.**
 
