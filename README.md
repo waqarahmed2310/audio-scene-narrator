@@ -4,7 +4,7 @@
 
 **Explaining complex acoustic scenes with sound event detection, foreground/background analysis and LLMs, and testing whether end-to-end audio-LLMs really understand scene structure.**
 
-**Live demo:** https://your-app-name.streamlit.app (pick a clip under *Example*, or upload your own)
+**Live demo:** https://audio-scene-narrator.streamlit.app/ (pick a clip under *Example*, or upload your own)
 
 Upload a recording and the system tells you what is happening in it:
 
