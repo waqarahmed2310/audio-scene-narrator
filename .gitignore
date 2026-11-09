@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+scenes/
+ESC-50-master/
+*.zip
+ .streamlit/secrets.toml
