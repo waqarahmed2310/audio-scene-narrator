@@ -1,0 +1,346 @@
+[
+  {
+    "id": "01_rainy_street",
+    "file": "01_rainy_street.wav",
+    "description": "A car horn honks while a siren passes in the rain.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "rain",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -30,
+        "source": "5-198321-A-10.wav"
+      },
+      {
+        "class": "car_horn",
+        "role": "foreground",
+        "onset": 2.0,
+        "offset": 5.5,
+        "snr_db": 8,
+        "source": "1-24074-A-43.wav"
+      },
+      {
+        "class": "siren",
+        "role": "foreground",
+        "onset": 3.05,
+        "offset": 6.5,
+        "snr_db": 8,
+        "source": "2-70939-A-42.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "car_horn",
+          "siren"
+        ],
+        "overlap_s": 2.45
+      }
+    ]
+  },
+  {
+    "id": "02_farm_morning",
+    "file": "02_farm_morning.wav",
+    "description": "A rooster crows over a mooing cow, then a dog barks, all in the wind.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "wind",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -32,
+        "source": "5-117773-A-16.wav"
+      },
+      {
+        "class": "rooster",
+        "role": "foreground",
+        "onset": 1.0,
+        "offset": 3.05,
+        "snr_db": 10,
+        "source": "1-27724-A-1.wav"
+      },
+      {
+        "class": "cow",
+        "role": "foreground",
+        "onset": 2.2,
+        "offset": 5.7,
+        "snr_db": 8,
+        "source": "5-202795-A-3.wav"
+      },
+      {
+        "class": "dog",
+        "role": "foreground",
+        "onset": 6.5,
+        "offset": 9.8,
+        "snr_db": 10,
+        "source": "2-117271-A-0.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "rooster",
+          "cow"
+        ],
+        "overlap_s": 0.85
+      }
+    ]
+  },
+  {
+    "id": "03_busy_home",
+    "file": "03_busy_home.wav",
+    "description": "A baby cries while someone knocks on the door, over a vacuum cleaner.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "vacuum_cleaner",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -30,
+        "source": "2-141682-B-36.wav"
+      },
+      {
+        "class": "crying_baby",
+        "role": "foreground",
+        "onset": 1.69,
+        "offset": 4.88,
+        "snr_db": 8,
+        "source": "1-187207-A-20.wav"
+      },
+      {
+        "class": "door_wood_knock",
+        "role": "foreground",
+        "onset": 3.0,
+        "offset": 6.5,
+        "snr_db": 10,
+        "source": "4-186518-A-30.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "crying_baby",
+          "door_wood_knock"
+        ],
+        "overlap_s": 1.88
+      }
+    ]
+  },
+  {
+    "id": "04_park_afternoon",
+    "file": "04_park_afternoon.wav",
+    "description": "A dog barks and people laugh at the same time, with birds chirping.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "chirping_birds",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -32,
+        "source": "1-54918-A-14.wav"
+      },
+      {
+        "class": "laughing",
+        "role": "foreground",
+        "onset": 2.0,
+        "offset": 5.5,
+        "snr_db": 9,
+        "source": "3-152997-A-26.wav"
+      },
+      {
+        "class": "dog",
+        "role": "foreground",
+        "onset": 2.82,
+        "offset": 6.3,
+        "snr_db": 10,
+        "source": "2-114587-A-0.wav"
+      },
+      {
+        "class": "clapping",
+        "role": "foreground",
+        "onset": 6.6,
+        "offset": 9.8,
+        "snr_db": 8,
+        "source": "5-221950-A-22.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "laughing",
+          "dog"
+        ],
+        "overlap_s": 2.68
+      }
+    ]
+  },
+  {
+    "id": "05_night_outside",
+    "file": "05_night_outside.wav",
+    "description": "A crow caws and a cat meows over each other, with crickets.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "crickets",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -32,
+        "source": "4-171823-A-13.wav"
+      },
+      {
+        "class": "crow",
+        "role": "foreground",
+        "onset": 2.5,
+        "offset": 6.0,
+        "snr_db": 10,
+        "source": "4-173865-A-9.wav"
+      },
+      {
+        "class": "cat",
+        "role": "foreground",
+        "onset": 3.49,
+        "offset": 6.66,
+        "snr_db": 9,
+        "source": "4-133047-A-5.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "crow",
+          "cat"
+        ],
+        "overlap_s": 2.51
+      }
+    ]
+  },
+  {
+    "id": "06_fireside",
+    "file": "06_fireside.wav",
+    "description": "Someone coughs, an alarm clock rings and they sneeze, by a crackling fire.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "crackling_fire",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -30,
+        "source": "1-17565-A-12.wav"
+      },
+      {
+        "class": "coughing",
+        "role": "foreground",
+        "onset": 1.5,
+        "offset": 3.9,
+        "snr_db": 10,
+        "source": "4-152995-A-24.wav"
+      },
+      {
+        "class": "clock_alarm",
+        "role": "foreground",
+        "onset": 2.55,
+        "offset": 5.97,
+        "snr_db": 6,
+        "source": "3-120526-A-37.wav"
+      },
+      {
+        "class": "sneezing",
+        "role": "foreground",
+        "onset": 7.0,
+        "offset": 9.8,
+        "snr_db": 10,
+        "source": "4-157297-A-21.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "coughing",
+          "clock_alarm"
+        ],
+        "overlap_s": 1.35
+      }
+    ]
+  },
+  {
+    "id": "07_train_ride",
+    "file": "07_train_ride.wav",
+    "description": "A baby cries and people laugh on a moving train.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "train",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -28,
+        "source": "2-262579-A-45.wav"
+      },
+      {
+        "class": "crying_baby",
+        "role": "foreground",
+        "onset": 2.05,
+        "offset": 5.5,
+        "snr_db": 8,
+        "source": "2-50666-A-20.wav"
+      },
+      {
+        "class": "laughing",
+        "role": "foreground",
+        "onset": 3.0,
+        "offset": 6.49,
+        "snr_db": 8,
+        "source": "5-242932-A-26.wav"
+      }
+    ],
+    "overlaps": [
+      {
+        "events": [
+          "crying_baby",
+          "laughing"
+        ],
+        "overlap_s": 2.5
+      }
+    ]
+  },
+  {
+    "id": "08_hard_quiet_siren",
+    "file": "08_hard_quiet_siren.wav",
+    "description": "HARD: a distant siren barely above heavy rain, with a loud knock.",
+    "duration": 10.0,
+    "events": [
+      {
+        "class": "rain",
+        "role": "background",
+        "onset": 0.0,
+        "offset": 10.0,
+        "level_dbfs": -26,
+        "source": "3-142005-A-10.wav"
+      },
+      {
+        "class": "siren",
+        "role": "foreground",
+        "onset": 1.0,
+        "offset": 4.28,
+        "snr_db": 2,
+        "source": "2-70936-A-42.wav"
+      },
+      {
+        "class": "door_wood_knock",
+        "role": "foreground",
+        "onset": 5.0,
+        "offset": 8.5,
+        "snr_db": 12,
+        "source": "3-180147-A-30.wav"
+      }
+    ],
+    "overlaps": []
+  }
+]
